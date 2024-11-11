@@ -1,0 +1,42 @@
+# Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# Virtualenv
+venv/
+env/
+ENV/
+.venv/
+.ENV/
+
+# Configurações Django
+*.sqlite3
+*.log
+*.pot
+*.pyc
+*.pyo
+*.coverage
+*.mypy_cache
+*.pytest_cache
+*.coverage.*
+.coverage
+
+# Arquivos de configuração do Django
+.env
+*.pem
+*.key
+*.crt
+
+# Node.js
+node_modules/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Outros arquivos que podem ser criados durante o desenvolvimento
+db.sqlite3
+media/
+staticfiles/
