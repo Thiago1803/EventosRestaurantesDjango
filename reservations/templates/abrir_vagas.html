@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+    <head>
+        <title>Tag title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'reservations/css/main.css' %}">
+    </head>
+
+    <body>
+        <h1>Insira Vagas Disponíveis</h1>
+        <h2>Restaurante {{Restaurante}}</h2>
+
+
+        <!-- o comando {% csrf_token %} é para validações de formulário -->
+        <form action="{% url 'abrir_vagas' %}" method="POST">{% csrf_token %}
+            <input type="text" name="name" placeholder="digite seu nome">
+            <br>
+            <br>
+            <input type="number" name="number_vacancies" placeholder="informe a quantidade de vagas min="0">
+            <br>
+            <br>
+            <button type="submit">Abrir Vagas</button>
+        </form>
+    </body>
+</html>
