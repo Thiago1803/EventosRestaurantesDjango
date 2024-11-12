@@ -1,28 +1,73 @@
 {% load static %}
 
 <!DOCTYPE html>
-
 <html lang="pt-BR">
     <head>
-        <title>Entrar</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{% static 'reservations/css/main.css' %}">
+
+        <title>Login</title>
+
+        <!-- CSS Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
     </head>
 
+
     <body>
-        <h1>Acessar Conta</h1>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="collapse navbar-collapse" id="navbar">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"> <a href="/" class="nav-link">Restaurantes</a> </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
 
+        <div class="container">
+            <div class="row justify-content-center" style="margin-top: 50px;">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="text-center">Acessar Conta</h3>
+                        </div>
+                        <div class="card-body">
+                            <form method="POST" action="{% url 'login' %}"> {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="username">Login</label>
+                                    <input type="text" class="form-control" id="username" name="username" required>
+                                </div>
 
-        <!-- o comando {% csrf_token %} é para validações de formulário -->
-        <form action="{% url 'login' %}" method="POST">{% csrf_token %}
-            <input type="text" name="username" placeholder="Login...">
-            <br>
-            <br>
-            <input type="password" name="password" placeholder="Senha...">
-            <br>
-            <br>
-            <button type="submit" value="logar">Entrar</button>
-        </form>
+                                <div class="form-group">
+                                    <label for="password">Senha</label>
+                                    <input type="password" class="form-control" id="password" name="password" required>
+                                </div>
+
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn btn-primary">Entrar</button>
+                                </div>
+
+                                <div class="form-group text-center">
+                                    <p>
+                                        Não possui conta? 
+                                        <br>
+                                        <a href="{% url 'cadastro' %}">Faça o cadastro aqui</a>
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Trabalho Django Reservas em Restaurantes</p>
+        </footer>
+    
+        <!-- JS do Bootstrap -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy96mBC4d3lE4jQ9duH6jDKjz" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-7rjXYjzT5l3I0HZnD25iSZXeWVgbiJFEgt5j6luwD0l4T5QbC0le3vwD/GoZT8l0" crossorigin="anonymous"></script>
     </body>
 </html>

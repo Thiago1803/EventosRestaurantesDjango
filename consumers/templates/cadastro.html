@@ -1,37 +1,108 @@
 {% load static %}
 
 <!DOCTYPE html>
-
 <html lang="pt-BR">
     <head>
-        <title>Cadastro</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{% static 'reservations/css/main.css' %}">
+
+        <title>Cadastrar</title>
+
+        <!-- CSS Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
     </head>
 
+
     <body>
-        <h1>Cadastrar Usuário</h1>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="collapse navbar-collapse" id="navbar">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"> <a href="/" class="nav-link">Restaurantes</a> </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container">
+            <div class="row justify-content-center" style="margin-top: 50px;">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="text-center">Cadastrar Usuário</h3>
+                        </div>
+                        <div class="card-body">
+                            <form method="POST" action="{% url 'cadastro' %}"> {% csrf_token %}
+                                
+                                <!-- Nome e Sobrenome -->
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="first_name">Nome</label>
+                                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Digite seu nome" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="last_name">Sobrenome</label>
+                                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Digite seu sobrenome" required>
+                                    </div>
+                                </div>
 
 
-        <!-- o comando {% csrf_token %} é para validações de formulário -->
-        <form action="{% url 'cadastro' %}" method="POST">{% csrf_token %}
-            <input type="text" name="first_name" placeholder="Nome...">
-            <br>
-            <br>
-            <input type="text" name="last_name" placeholder="Sobrenome...">
-            <br>
-            <br>
-            <input type="text" name="username" placeholder="Login...">
-            <br>
-            <br>
-            <input type="email" name="email" placeholder="Email...">
-            <br>
-            <br>
-            <input type="password" name="password" placeholder="Senha...">
-            <br>
-            <br>
-            <button type="submit" value="cadastrar">Cadastrar</button>
-        </form>
+                                <!-- Email e Login -->
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="username">Login</label>
+                                        <input type="text" class="form-control" id="username" name="username" placeholder="Defina seu nome de usuário" required>
+                                    </div>
+    
+                                    <div class="form-group col-md-6">
+                                        <label for="email">E-mail</label>
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu e-mail" required>
+                                    </div>
+                                </div>
+                                
+                        
+                                <!-- Senha -->
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="password">Senha</label>
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Escolha uma senha" required>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label for="password2">Confirme a Senha</label>
+                                        <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirme sua senha" required>
+                                    </div>
+                                </div>
+                                
+                                <br>
+                        
+                                <!-- Botão de Cadastro -->
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                                </div>
+                        
+                                <!-- Link para Login -->
+                                <div class="form-group text-center">
+                                    <p>
+                                        Já tem uma conta?
+                                        <br>
+                                        <a href="{% url 'login' %}">Faça login aqui</a>
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Trabalho Django Reservas em Restaurantes</p>
+        </footer>
+    
+        <!-- JS do Bootstrap -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy96mBC4d3lE4jQ9duH6jDKjz" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-7rjXYjzT5l3I0HZnD25iSZXeWVgbiJFEgt5j6luwD0l4T5QbC0le3vwD/GoZT8l0" crossorigin="anonymous"></script>
     </body>
 </html>
