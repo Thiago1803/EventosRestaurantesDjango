@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+    <head>
+        <title>Cadastro</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'reservations/css/main.css' %}">
+    </head>
+
+    <body>
+        <h1>Cadastrar Usuários</h1>
+
+
+        <!-- o comando {% csrf_token %} é para validações de formulário -->
+        <form action="{% url 'cadastro' %}" method="POST">{% csrf_token %}
+            <input type="text" name="first_name" placeholder="Nome...">
+            <br>
+            <br>
+            <input type="text" name="last_name" placeholder="Sobrenome...">
+            <br>
+            <br>
+            <input type="text" name="username" placeholder="Login...">
+            <br>
+            <br>
+            <input type="email" name="email" placeholder="Email...">
+            <br>
+            <br>
+            <input type="password" name="password" placeholder="Senha...">
+            <br>
+            <br>
+            <button type="submit" value="cadastrar">Cadastrar</button>
+        </form>
+    </body>
+</html>

@@ -4,26 +4,25 @@
 
 <html lang="pt-BR">
     <head>
-        <title>Abrir vagas</title>
+        <title>Entrar</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{% static 'reservations/css/main.css' %}">
     </head>
 
     <body>
-        <h1>Insira Vagas Disponíveis</h1>
-        <h2>Restaurante {{Restaurante}}</h2>
+        <h1>Acessar Conta</h1>
 
 
         <!-- o comando {% csrf_token %} é para validações de formulário -->
-        <form action="{% url 'abrir_vagas' %}" method="POST">{% csrf_token %}
-            <input type="text" name="name" placeholder="digite seu nome">
+        <form action="{% url 'login' %}" method="POST">{% csrf_token %}
+            <input type="text" name="username" placeholder="Login...">
             <br>
             <br>
-            <input type="number" name="number_vacancies" placeholder="informe a quantidade de vagas min="0">
+            <input type="password" name="password" placeholder="Senha...">
             <br>
             <br>
-            <button type="submit">Abrir Vagas</button>
+            <button type="submit" value="logar">Entrar</button>
         </form>
     </body>
 </html>
