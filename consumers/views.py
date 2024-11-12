@@ -3,7 +3,6 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as login_django
-from django.contrib.auth.decorators import login_required
 
 def cadastro(request):
     if(request.method == "GET"):
@@ -34,7 +33,7 @@ def cadastro(request):
         )
         user.save()
 
-        return HttpResponse("Usuário Cadastrado com Sucesso")
+        return render(request, 'login.html')
         
 
 
@@ -52,12 +51,6 @@ def login(request):
         user = authenticate(username=username, password=password)
         if(user):
             login_django(request, user) # esse código que de fato irá autenticar o usuário
-            return HttpResponse("Autenticado")
+            return render(request, 'home.html')
         else:
             return HttpResponse("Login ou senha inválidos")
-        
-
-@login_required(login_url="/auth/login/")
-def plataforma(request):
-    if(request.user.is_autenticated):
-        return HttpResponse("Plataforma")
