@@ -3,6 +3,7 @@
     font-family: 'Roboto';
 }
   
+
 body {
     min-height: 100vh;
     padding-bottom: 100px;
@@ -60,10 +61,9 @@ header {
   
 /* Search Container */
 #search-container {
-    background-image: url("../img/kratoAjuda.jpg");
     background-size: cover;
     background-position: center;
-    height: 400px;
+    min-height: 300px;
     padding: 50px;
     text-align: center;
 }
@@ -79,16 +79,17 @@ header {
     margin: 0 auto;
 }
   
-/* Products list */
-#products-container {
+/* Restaurants list */
+#restaurants-container {
     padding: 50px;
+    padding-bottom: 12px;
 }
   
-#products-container h2 {
+#restaurants-container h2 {
     margin-bottom: 10px;
 }
   
-#products-container .subtitle {
+#restaurants-container .subtitle {
     color: #757575;
     margin-bottom: 30px;
 }
@@ -97,7 +98,7 @@ header {
     display: flex;
 }
   
-#products-container .card {
+#restaurants-container .card {
     flex: 1 1 24%;
     max-width: 25%;
     border-radius: 10px;
@@ -105,7 +106,7 @@ header {
     margin: .5%;
 }
   
-#products-container img {
+#restaurants-container img {
     max-height: 150px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -128,22 +129,22 @@ header {
     color: #757575;
 }
 
-/* Product create page*/
-#product-create-container{
+/* Restaurant create page*/
+#restaurant-create-container{
     padding: 30px
 }
 
-#product-create-container label{
+#restaurant-create-container label{
     font-weight: bold;
 }
 
-#product-create-container input,
-#product-create-container select,
-#product-create-container textarea{
+#restaurant-create-container input,
+#restaurant-create-container select,
+#restaurant-create-container textarea{
     font-size: 12px;
 }
 
-/* product page */
+/* restaurant page */
 #image-container,
 #info-container {
   margin-top: 30px;
@@ -176,7 +177,7 @@ header {
   margin-right: 5px;
 }
 
-#info-container #product-submit {
+#info-container #restaurant-submit {
   margin: 20px 0;
 }
 
@@ -198,11 +199,11 @@ header {
     margin-top: 30px;
 }
   
-.dashboard-products-container th {
+.dashboard-restaurants-container th {
     width: 25%;
 }
 
-.dashboard-products-container form{
+.dashboard-restaurants-container form{
     display: inline-block;
 }
 

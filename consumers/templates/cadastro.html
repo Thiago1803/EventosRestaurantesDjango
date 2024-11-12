@@ -20,13 +20,21 @@
                 <div class="collapse navbar-collapse" id="navbar">
                     <ul class="navbar-nav">
                         <li class="nav-item"> <a href="/" class="nav-link">Restaurantes</a> </li>
+
+                        {% if user.is_authenticated %}
+                            <li class="nav-item"> <a href="#" class="nav-link">Minhas Reservas</a> </li>
+                            <li class="nav-item"> <a href="{% url 'logout' %}" class="nav-link">Logout</a> </li>
+                        {% else %}
+                            <li class="nav-item"> <a href="{% url 'login' %}" class="nav-link">Entrar</a> </li>
+                            <li class="nav-item"> <a href="{% url 'cadastro' %}" class="nav-link">Cadastrar</a> </li>
+                        {% endif %}
                     </ul>
                 </div>
             </nav>
         </header>
 
         <div class="container">
-            <div class="row justify-content-center" style="margin-top: 50px;">
+            <div class="row justify-content-center" style="margin-top: 50px; margin-bottom: 35px;">
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header">
@@ -80,15 +88,6 @@
                                 <!-- Botão de Cadastro -->
                                 <div class="form-group text-center">
                                     <button type="submit" class="btn btn-primary">Cadastrar</button>
-                                </div>
-                        
-                                <!-- Link para Login -->
-                                <div class="form-group text-center">
-                                    <p>
-                                        Já tem uma conta?
-                                        <br>
-                                        <a href="{% url 'login' %}">Faça login aqui</a>
-                                    </p>
                                 </div>
                             </form>
                         </div>
