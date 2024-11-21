@@ -1,6 +1,6 @@
 /* General */
 * {
-    font-family: 'Roboto';
+    font-family: 'Montserrat', sans-serif;
 }
   
 
@@ -24,13 +24,13 @@ header {
 }
   
 .btn-primary {
-    background-color: #F2A340;
-    border: 2px solid #C28008;
+    background-color: #45743D;
+    border: none;
 }
   
 .btn-primary:hover {
-    background-color: #C28008;
-    border-color: #C28008;
+    background-color: #30532A;
+    border: none;
 }
 
 .MsgSucesso{
@@ -69,7 +69,7 @@ header {
 }
   
 #search-container h1 {
-    color: #F2A340;
+    color: #45743D;
     margin-bottom: 30px;
     font-weight: 900;
 }
@@ -228,4 +228,83 @@ footer p {
     width: 100px;
     display: block;
     margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .carousel-inner .carousel-item > div {
+        display: none;
+    }
+    .carousel-inner .carousel-item > div:first-child {
+        display: block;
+    }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
+/* display 3 */
+@media (min-width: 768px) {
+    
+    .carousel-inner .carousel-item-right.active,
+    .carousel-inner .carousel-item-next {
+      transform: translateX(33.333%);
+    }
+    
+    .carousel-inner .carousel-item-left.active, 
+    .carousel-inner .carousel-item-prev {
+      transform: translateX(-33.333%);
+    }
+}
+
+.carousel-inner .carousel-item-right,
+.carousel-inner .carousel-item-left{ 
+  transform: translateX(0);
+}
+
+/* FILTER */
+
+.componente-link {
+    width: 100px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    align-items: center;
+    text-align: center;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #2f4131;
+}
+
+.componente-link:hover {
+    color: #151d16;
+    text-decoration: none; 
+}
+
+.material-icons {
+    vertical-align: middle;
+    font-size: 1.5rem;
+    margin-right: 8px;
+    color: #2f4131;
+}
+
+
+/* FILTROS */
+.filter{
+    justify-content: center;
+}
+
+/* SEARCH */
+.form-control{
+    height: 54px;
+}
+
+.btn-form-control{
+    height: 54px;
 }

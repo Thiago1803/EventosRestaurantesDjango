@@ -51,6 +51,6 @@ def login(request):
         user = authenticate(username=username, password=password)
         if(user):
             login_django(request, user) # esse código que de fato irá autenticar o usuário
-            return render(request, 'home.html')
+            return render(request, 'index.html')
         else:
             return HttpResponse("Login ou senha inválidos")

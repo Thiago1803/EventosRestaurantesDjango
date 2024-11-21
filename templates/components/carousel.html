@@ -1,0 +1,5 @@
+<div id="filtro-container" class="row">
+    {% for filtro in filtros %}
+        {% include "components/filter.html" with filter=filtro %}
+    {% endfor %}
+</div>
