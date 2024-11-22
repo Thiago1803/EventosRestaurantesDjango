@@ -1,8 +1,16 @@
-<div class="card col-md-3">
+{% load static %}
+
+<div class="card custom-card col-md-3">
+    <div class="card-img-container">
+        <img src="{% static 'img/restaurante_example.png' %}" alt="Imagem do card" class="card-img-top" />
+        <div class="logo-container">
+            <img src="{% static 'img/image.png' %}" alt="Logo" class="logo-img">
+        </div>
+    </div>
     <div class="card-body">
         <h5 class="card-title">{{ restaurante.name }}</h5>
-        <p class="card-participants">Funcionamento: {{ restaurante.opening_time }} - {{ restaurante.closing_time }}</p>
-        <p class="card-participants">{{ restaurante.quantidade }} Disponíveis</p>
+        <p class="card-participants">{{ restaurante.host_name }}</p>
+        <p class="card-price">R$ {{ restaurante.price }}/dia</p>
         <a href="/" class="btn btn-primary">Ver vagas</a>
     </div>
 </div>
