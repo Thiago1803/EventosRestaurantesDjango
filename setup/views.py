@@ -10,12 +10,14 @@ def logout_view(request):
 
 
 def home(request):
-    search = request.GET.get('search', None)  # Pegando o que foi buscado e armazenando em "search", se nada foi buscado entao o valor é "none"
-
-    if search:  # Procuro no BD restaurantes que POSSUEM EM SEU NOME o que foi buscado
-        restaurantes = Restaurants.objects.filter(name__icontains=search) 
-    else:  # Se nada foi buscado, pego tudo
-        restaurantes = Restaurants.objects.all()
+    city = request.GET.get('city', None)  # Pegando a cidade que foi buscada, se nada foi buscado entao o valor é "none"
+    food = request.GET.get('food', None)  # Pegando a comida que foi buscada, se nada foi buscado entao o valor é "none"
+    restaurant = request.GET.get('restaurant_name', None)  # Pegando o restaurante que foi buscado, se nada foi buscado entao o valor é "none"
+    
+    restaurantes = Restaurants.objects.all() # Pega todos os restaurantes salvos
+    if restaurant: restaurantes = restaurantes.filter(name__icontains=restaurant) # Mantenho apenas os que são da cidade buscada em 'city'
+    if city: restaurantes = restaurantes.filter(city__icontains=city) # Mantenho apenas os que são da cidade buscada em 'city'
+    if food: restaurantes = restaurantes.filter(menu__name__icontains=food) # Mantenho apenas os que tem a comida buscada em 'food'
 
     filtros = [
         {'param': 'pub', 'icon': 'local_bar', 'text': 'Pub'},
@@ -31,4 +33,6 @@ def home(request):
         {'param': 'espetaculo', 'icon': 'theater_comedy', 'text': 'Espetáculo'}
     ]
 
-    return render(request, 'index.html', {'restaurantes': restaurantes, 'search': search, 'filtros': filtros})
+
+    # flg_teve_busca é para indicar se o usuário buscou algo, só para controlar a mensagem exibida na tela inicial
+    return render(request, 'index.html', {'restaurantes': restaurantes, 'flg_teve_busca': bool(city or food or restaurant), 'filtros': filtros})

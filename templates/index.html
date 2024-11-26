@@ -33,9 +33,9 @@
             {% endfor %}
         </div>
         <div id="restaurants-container" class="col-md-12">
-            {% if restaurantes|length == 0 and search %}
+            {% if restaurantes|length == 0 and flg_teve_busca %}
                 <p>
-                    Não foram encontrados resultados para: "{{ search }}"! 
+                    Não foram encontrados resultados para o filtro aplicado! 
                     <br>
                     <a href="/">Ver todos os restaurantes</a>
                 </p>
@@ -44,8 +44,8 @@
                 <p>Não há restaurantes cadastrados no site</p>
             
             {% else %}
-                {% if search %}
-                    <h3>Resultados encontrados para: "{{ search }}"</h3>
+                {% if flg_teve_busca %}
+                    <h3>Resultados encontrados:</h3>
                 {% else %}
                     <h3>Restaurantes</h3>
                 {% endif %}

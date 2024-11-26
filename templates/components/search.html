@@ -1,19 +1,25 @@
 <form action="/" method="GET" class="d-flex align-items-center p-0" >
-    <!-- Destino -->
+    <!-- Restaurante -->
     <div class="flex-grow-1 position-relative">
-        <input type="text" id="destino" name="destino" class="form-control" placeholder="Buscar cidade" style="border-radius: 15px 0 0 15px;"> <!-- Lado esquerdo arredondado -->
+        <input type="text" id="restaurant_name" name="restaurant_name" class="form-control" placeholder="Buscar restaurante" style="border-radius: 15px 0 0 15px;"> <!-- Lado esquerdo arredondado -->
+        <div class="position-absolute top-0 bottom-0 start-100 translate-middle-y"></div> <!-- Divider -->
+    </div>
+
+    <!-- Cidade -->
+    <div class="flex-grow-1 position-relative">
+        <input type="text" id="city" name="city" class="form-control" placeholder="Buscar cidade" style="border-radius: 0;">
         <div class="position-absolute top-0 bottom-0 start-100 translate-middle-y"></div> <!-- Divider -->
     </div>
     
-    <!-- Check-in -->
+    <!-- Comida -->
     <div class="flex-grow-1 position-relative">
-        <input type="text" id="destino" name="destino" class="form-control" placeholder="Buscar comida" style="border-radius: 0;"> <!-- Lado esquerdo arredondado -->
+        <input type="text" id="food" name="food" class="form-control" placeholder="Buscar comida" style="border-radius: 0;">
         <div class="position-absolute top-0 bottom-0 start-100 translate-middle-y"></div> <!-- Divider -->
     </div>
     
-    <!-- Check-out -->
+    <!-- Data da reserva -->
     <div class="flex-grow-1 position-relative">
-        <input type="date" id="checkout" name="checkout" class="form-control" placeholder="Check-out" style="border-radius: 0;">
+        <input type="date" id="vacancy_date" name="vacancy_date" class="form-control" placeholder="Check-out" style="border-radius: 0;">
     </div>
     
     <!-- Botão de Buscar -->
