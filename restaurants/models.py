@@ -57,6 +57,8 @@ class Restaurants(models.Model):
     closing_time = models.TimeField(null=False, blank=False, verbose_name="Fechamento")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Criado em")
 
+    image = models.ImageField(upload_to='restaurants/', null=True, blank=True, verbose_name="Imagem")
+
 
     class Meta:
         verbose_name = "Restaurante"  # No ambiente admin, esse é o nome que irá aparecer nos lugares onde o nome no singular é usado

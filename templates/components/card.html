@@ -2,7 +2,12 @@
 
 <div class="card custom-card col-md-3">
     <div class="card-img-container">
-        <img src="{% static 'img/restaurante_example.png' %}" alt="Imagem do card" class="card-img-top" />
+        {% if restaurante.image %}
+            <img src="{{ restaurante.image.url }}" alt="{{ restaurante.name }}" class="card-img-top">
+        {% else %}
+            <img src="{% static 'img/restaurante_example.png' %}" alt="Imagem do card" class="card-img-top" />
+        {% endif %}
+        
         <div class="logo-container">
             <img src="{% static 'img/image.png' %}" alt="Logo" class="logo-img">
         </div>

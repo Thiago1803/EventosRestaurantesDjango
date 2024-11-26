@@ -4,18 +4,21 @@ from .models import Restaurants, Food, Category
 
 @admin.register(Restaurants) # aqui faz aparecer o menuzinho de restaurantes la no ambiete admin
 class RestaurantAdmin(admin.ModelAdmin):
-    list_display = ('name', 'address', 'city', 'phone', 'display_foods', 'display_categories')
+    list_display = ('image', 'name', 'address', 'city', 'phone', 'display_foods', 'display_categories')
     list_display_links = ('name',)
     search_fields = ('name', 'city',)
     filter_horizontal = ('menu', 'category', )
 
+    # Função para exibir as comidas associadas ao restaurante
     def display_foods(self, obj):
-        return ", ".join([food.name for food in obj.menu.all()]) # pega as comidas associadas ao restaurante
+        return ", ".join([food.name for food in obj.menu.all()]) 
     display_foods.short_description = 'Menu'
 
+    # Função para exibir as categorias associadas ao restaurante
     def display_categories(self, obj):
-        return ", ".join([category.name for category in obj.category.all()]) # pega as categorias associadas ao restaurante
+        return ", ".join([category.name for category in obj.category.all()])
     display_categories.short_description = 'Categorias'
+
 
 
 @admin.register(Food) # aqui faz aparecer o menuzinho de comidas la no ambiete admin
