@@ -334,15 +334,14 @@ footer p {
 .componente-link:hover {
     color: #151d16;
     text-decoration: none; 
+    background-color: #8dbe9328;
 }
 
 .material-icons {
     vertical-align: middle;
     font-size: 1.5rem;
-    margin-right: 8px;
     color: #2f4131;
 }
-
 
 /* FILTROS */
 .filter{

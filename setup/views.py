@@ -29,7 +29,7 @@ def home(request):
         {'param': 'praia', 'icon': 'beach_access', 'text': 'Perto da praia'},
         {'param': 'gastronomia', 'icon': 'restaurant', 'text': 'Gastronomia de autor'},
         {'param': 'romântico', 'icon': 'favorite', 'text': 'Ambiente romântico'},
-        {'param': 'vegetariana', 'icon': 'leaf', 'text': 'Opções vegetarianas'},
+        {'param': 'vegetariana', 'icon': 'eco', 'text': 'Opções vegetarianas'},
         {'param': 'família', 'icon': 'family_restroom', 'text': 'Para toda a família'},
         {'param': 'música', 'icon': 'music_note', 'text': 'Música ao vivo'},
         {'param': 'espetáculo', 'icon': 'theater_comedy', 'text': 'Espetáculo'}
