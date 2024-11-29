@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinValueValidator
 
 
 # null define se aceita ou não "valores nulos"
@@ -52,6 +53,8 @@ class Restaurants(models.Model):
 
     menu = models.ManyToManyField(Food, related_name='restaurants', verbose_name="Comida")
     category = models.ManyToManyField(Category, related_name='restaurants', verbose_name="Categoria")
+
+    total_resevations = models.PositiveIntegerField(validators=[MinValueValidator(1)], verbose_name='Total de Vagas', default=0)
 
     opening_time = models.TimeField(null=False, blank=False, verbose_name="Abertura")
     closing_time = models.TimeField(null=False, blank=False, verbose_name="Fechamento")

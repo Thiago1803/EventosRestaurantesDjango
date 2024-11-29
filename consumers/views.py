@@ -14,7 +14,6 @@ def cadastro(request):
         password = request.POST.get('password')
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
-        first_name = request.POST.get('first_name')
 
 
         # verifica se já existe um usuário no banco de dados com o mesmo login, para nao deixar
