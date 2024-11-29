@@ -1,3 +1,5 @@
+{% load static %}
+
 <form action="/" method="GET" class="d-flex align-items-center p-0" >
     <!-- Restaurante -->
     <div class="flex-grow-1 position-relative">
@@ -25,3 +27,5 @@
     <!-- Botão de Buscar -->
     <button type="submit" class="btn btn-primary btn-form-control" style="border-radius: 0 15px 15px 0;">Buscar</button> <!-- Lado direito arredondado -->
 </form>
+
+<script src="{% static 'js/form-handler.js' %}"></script>
