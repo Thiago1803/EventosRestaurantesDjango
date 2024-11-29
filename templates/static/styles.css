@@ -73,6 +73,10 @@ header {
     margin-bottom: 30px;
     font-weight: 900;
 }
+
+.search-inner-container{
+    max-width: 900px;
+}
   
 #search-container form {
     width: 90%;
