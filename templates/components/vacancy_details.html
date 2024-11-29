@@ -1,0 +1,71 @@
+{% load static %}
+
+<div class="container my-5" data-param="{{ restaurante.param }}">
+    <div class="row">
+        <!-- Principal Content (Imagem + Descrição) -->
+        <div class="col-md-8">
+            <div class="vacancy_details_img position-relative mb-4">
+                <!-- Imagem Principal -->
+                <img src="{% static 'img/restaurante_example.png' %}" alt="Imagem do card" class="img-fluid"
+                    style="height: auto;" />
+            </div>
+
+            <div class="content">
+                <!-- Título e Avaliação -->
+                <h5 class="vacancy_details_title fw-bold">{{ restaurante.name }}</h5>
+                <p class="card-text">{{ restaurante.address }} <i class="bi bi-star-fill" style="color: gold;"></i></p>
+
+                <!-- Descrição -->
+                <p class="vacancy_details_description card-text text-muted">
+                    AD AD Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non leo tortor. Vestibulum ante
+                    ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse potenti.
+                    Maecenas dignissim ipsum velit, et suscipit lacus cursus ac. Curabitur id mollis nisl. Fusce
+                    consectetur facilisis justo in molestie. Maecenas tortor lacus, lacinia nec nunc viverra, sodales
+                    cursus sapien. Phasellus ac lacinia turpis. Pellentesque blandit a sapien in rhoncus. Vivamus
+                    imperdiet eleifend volutpat. Morbi cursus porta nisl. Pellentesque est arcu, porttitor quis justo a,
+                    auctor dapibus arcu. Ut dictum leo nec sapien efficitur congue. Class aptent taciti sociosqu ad
+                    litora torquent per conubia nostra, per inceptos himenaeos. Donec a turpis ut ante rutrum
+                    ullamcorper sit amet in mi.
+                </p>
+
+            </div>
+        </div>
+
+        <!-- Aside com Calendário -->
+        <div class="col-md-4 aside_detail">
+            <aside class="bg-light p-4">
+                <form method="POST" action="/vagas/reservar/{{ restaurante.id }}/">
+                    {% csrf_token %}
+                    <input type="hidden" name="restaurante" value="{{ restaurante.id }}">
+
+                    <h5 class="fw-bold">R$ 54,00/Dia</h5>
+                    <div class="row d-flex justify-content-between primary-color ">
+                        <p>Abertura: {{restaurante.opening_time}}</p>
+                        <p>Fechamento: {{restaurante.closing_time}}</p>
+                    </div>
+
+                    <div class="calendar">
+                        <!-- Calendário Bootstrap 5 -->
+                        <input type="date" class="form-control"  id="date_reservation" name="date_reservation" required/>
+                    </div>
+
+                    <div class="mt-5">
+                        <!-- Campo para quantidade de vagas -->
+                        <label for="vagas" class="form-label">Quantidade de Vagas</label>
+                        <p class="vacancy_total fs-6">Vagas disponíveis: {{10}}</p>
+
+                        <input type="number" class="form-control" id="number_reservations" name="number_reservations" min="1" max="{10 }"
+                            placeholder="Digite a quantidade de vagas" required />
+                    </div>
+
+                    <!-- Botão de submit -->
+                    <div class="mt-3">
+                        <button type="submit" class="btn btn-primary w-100">Reservar</button>
+                    </div>
+                </form>
+
+            </aside>
+        </div>
+
+    </div>
+</div>

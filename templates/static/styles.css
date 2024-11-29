@@ -356,3 +356,51 @@ footer p {
 .btn-form-control{
     height: 54px;
 }
+
+
+.vacancy_details_img{
+    background-color: #45743D;
+    border-radius: 1.5rem;
+}
+
+.vacancy_details_img img{
+    border-radius: 1rem;
+}
+
+.vacancy_details_title{
+    font-weight: bold;
+}
+
+.vacancy_details_description {
+    text-align: justify;
+    line-height: 1.6; /* Ajuste o valor conforme necessário */
+}
+
+#search-container-details{
+    background-size: cover;
+    background-position: center;
+    padding: 50px;
+    text-align: center;
+    justify-items: center;
+}
+
+
+.vacancy_total{
+    font-size: 14px;
+    color: #155724!important;
+}
+
+
+.primary-color{
+    color: #155724!important;
+}
+
+.fw-bold{
+    font-weight: 600;
+}
+
+.aside_detail{
+    height: 470px;
+    position: sticky;
+    top: 30px;
+}

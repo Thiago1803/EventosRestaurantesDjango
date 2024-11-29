@@ -7,50 +7,32 @@
         <title>Tag title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{% static 'reservations/css/main.css' %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+
     </head>
 
     <body>
-        <h1>Visualizar Vagas</h1>
+        <div id="search-container-details">
+            {% include "components/search.html" %}
+        </div>
 
-        <h2>Dados do restaurante</h2>
-        <h3>Restaurante: {{restaurante.name}}</h3>
-        <h3>Endereço: {{restaurante.address}}</h3>
-        <h3>Abertura: {{restaurante.opening_time}}</h3>
-        <h3>Fechamento: {{restaurante.closing_time}}</h3>
-        <h3>Total de Vagas: {{total_vagas}}</h3>
-        <h3>Total de Reservas Feitas: {{total_reservas}}</h3>
-        <h3>Vagas Disponíveis: {{vagas_disponiveis}}</h3>
+        {% include "components/vacancy_details.html" with restaurante=restaurante %}
 
 
         <br><br>
 
-        {% if cliente.is_authenticated %}
-            <h2>Dados de quem está reservando</h2>
-            <h3>Quem é: {{cliente.first_name}}</h3>
-            <h3>Email de Contato: {{cliente.email}}</h3>
-        {% else %}
-            <p>Você não está logado. <a href="/auth/login/">Faça login</a></p>
-        {% endif %}
+        {% comment %}
+            {% if cliente.is_authenticated %}
+                <h2>Dados de quem está reservando</h2>
+                <h3>Quem é: {{cliente.first_name}}</h3>
+                <h3>Email de Contato: {{cliente.email}}</h3>
+            {% else %}
+                <p>Você não está logado. <a href="/auth/login/">Faça login</a></p>
+            {% endif %}
+        {% endcomment %}
+    
 
-
-        <form method="POST" action="/vagas/reservar/{{ restaurante.id }}/">
-            {% csrf_token %}
-            
-            <input type="hidden" name="restaurante" value="{{ restaurante.id }}">
-        
-            <label for="number_reservations">Quantidade de Reservas*</label>
-            <input id="number_reservations" name="number_reservations" type="number" min="1" required>
-        
-            <br><br>
-        
-            <label for="date_reservation">Data da Reserva*</label>
-            <input id="date_reservation" name="date_reservation" type="date" required>
-        
-            <br><br>
-        
-            <button type="submit">Reservar</button>
-        </form>
     </body>
 </html>
 
