@@ -20,8 +20,10 @@
 </head>
 
 <body>
+    <!--TODO VER COMO PASSAR O USER-->
     <header>
-        {% include "components/navbar.html" %}
+        {% include "components/navbar.html" with user=user %}
+
     </header>
 
     <div id="search-container" class="col-md-12">
