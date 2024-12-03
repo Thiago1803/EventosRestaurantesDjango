@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
@@ -50,6 +50,6 @@ def login(request):
         user = authenticate(username=username, password=password)
         if(user):
             login_django(request, user) # esse código que de fato irá autenticar o usuário
-            return render(request, 'index.html')
+            return redirect('/')
         else:
             return HttpResponse("Login ou senha inválidos")
