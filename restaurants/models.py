@@ -50,6 +50,7 @@ class Restaurants(models.Model):
     phone = models.CharField(max_length=15, null=True, blank=True, verbose_name="Telefone")
     email = models.CharField(max_length=100, null=True, blank=True, verbose_name="Email")
     city = models.CharField(max_length=150, null=False, blank=False, verbose_name="Cidade", default="null")
+    description = models.TextField(null=True, blank=True, verbose_name="Descrição")
 
     menu = models.ManyToManyField(Food, related_name='restaurants', verbose_name="Comida")
     category = models.ManyToManyField(Category, related_name='restaurants', verbose_name="Categoria")

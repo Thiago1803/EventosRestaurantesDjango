@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from restaurants.models import Restaurants
 from reservations.models import Reservations
@@ -47,7 +47,6 @@ def reservar_vaga(request, restaurante_id):
 
     # ve se o usuário nao está logado
     if not request.user.is_authenticated:
-        messages.error(request, "Você precisa estar logado para fazer uma reserva.")
         return render(request, 'login.html')  # Redireciona para a página de login
 
 
@@ -74,8 +73,9 @@ def reservar_vaga(request, restaurante_id):
         number_reservations=number_reservations,
         date_reservation=date_reservation
     )
-    messages.success(request, "Reserva feita com sucesso!")
-    return render(request, 'index.html')
+
+    #redirect retorna para uma rota, enquanto render apenas renderiza o html
+    return redirect('/')
     
 
 

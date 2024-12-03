@@ -9,11 +9,8 @@ document.querySelector("form").addEventListener("submit", function(event) {
         }
     });
 
-    if (!hasValue) {
-        event.preventDefault();
-        return;
-    }
-
     event.preventDefault();
-    window.location.href = `?${params.toString()}`;
+
+    if (hasValue) window.location.href = `?${params.toString()}`;
+    else window.location.href = `/`;
 });

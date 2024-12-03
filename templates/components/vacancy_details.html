@@ -6,8 +6,11 @@
         <div class="col-md-8">
             <div class="vacancy_details_img position-relative mb-4">
                 <!-- Imagem Principal -->
-                <img src="{% static 'img/restaurante_example.png' %}" alt="Imagem do card" class="img-fluid"
-                    style="height: auto;" />
+                {% if restaurante.image %}
+                    <img src="{{ restaurante.image.url }}" alt="{{ restaurante.name }}" class="img-fluid" style="height: auto;">
+                {% else %}
+                    <img src="{% static 'img/restaurante_example.png' %}" alt="Imagem do card" class="img-fluid" style="height: auto;">
+                {% endif %}
             </div>
 
             <div class="content">
@@ -17,15 +20,11 @@
 
                 <!-- Descrição -->
                 <p class="vacancy_details_description card-text text-muted">
-                    AD AD Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non leo tortor. Vestibulum ante
-                    ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse potenti.
-                    Maecenas dignissim ipsum velit, et suscipit lacus cursus ac. Curabitur id mollis nisl. Fusce
-                    consectetur facilisis justo in molestie. Maecenas tortor lacus, lacinia nec nunc viverra, sodales
-                    cursus sapien. Phasellus ac lacinia turpis. Pellentesque blandit a sapien in rhoncus. Vivamus
-                    imperdiet eleifend volutpat. Morbi cursus porta nisl. Pellentesque est arcu, porttitor quis justo a,
-                    auctor dapibus arcu. Ut dictum leo nec sapien efficitur congue. Class aptent taciti sociosqu ad
-                    litora torquent per conubia nostra, per inceptos himenaeos. Donec a turpis ut ante rutrum
-                    ullamcorper sit amet in mi.
+                    {% if restaurante.description %}
+                        {{restaurante.description}}
+                    {% else %}
+                        --
+                    {% endif %}
                 </p>
 
             </div>
@@ -52,9 +51,9 @@
                     <div class="mt-5">
                         <!-- Campo para quantidade de vagas -->
                         <label for="vagas" class="form-label">Quantidade de Vagas</label>
-                        <p class="vacancy_total fs-6">Vagas disponíveis: {{10}}</p>
+                        <p class="vacancy_total fs-6">Vagas disponíveis: {{vagas_disponiveis}}</p>
 
-                        <input type="number" class="form-control" id="number_reservations" name="number_reservations" min="1" max="{10 }"
+                        <input type="number" class="form-control" id="number_reservations" name="number_reservations" min="1" max="{{vagas_disponiveis}}"
                             placeholder="Digite a quantidade de vagas" required />
                     </div>
 
