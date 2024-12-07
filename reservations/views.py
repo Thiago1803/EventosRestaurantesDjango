@@ -5,6 +5,7 @@ from reservations.models import Reservations
 from django.db.models import Sum
 from django.contrib import messages
 from django.utils import timezone
+from datetime import datetime
 
 
 def ver_vagas(request, restaurante_id):
@@ -24,8 +25,12 @@ def ver_vagas(request, restaurante_id):
         #pega os dados do usuario logado
         client = request.user
 
+        #pega a data atual, para ser o dia minímo permitido para reserva
+        today = datetime.now().date().strftime('%Y-%m-%d')
+
         return render(request, 'ver_vagas.html', 
             {
+                'today': today,
                 'cliente': client,
                 'restaurante': restaurante, 'total_vagas': total_vagas, 
                 'total_reservas': total_reservas, 'vagas_disponiveis': vagas_disponiveis
@@ -79,6 +84,31 @@ def reservar_vaga(request, restaurante_id):
     
 
 
+def ver_minhas_reservas(request):
+    # ve se o usuário nao está logado
+    if not request.user.is_authenticated:
+        return render(request, 'login.html')  # Redireciona para a página de login
+    
+    
+    client = request.user #pega os dados do usuario logado
+    today = datetime.now().date() # data de hoje
+
+
+    # Filtra as reservas feitas por este usuário
+    reservations = (
+        Reservations.objects.filter(client=client)
+        .values('date_reservation', 'restaurant__name')  # Agrupa por data e restaurante
+        .annotate(total_reservations=Sum('number_reservations'))
+    )
+
+    # Divide as reservas entre passadas e ativas
+    reservas_ativas = [r for r in reservations if r['date_reservation'].date() >= today]
+    reservas_passadas = [r for r in reservations if r['date_reservation'].date() < today]
+
+    return render(request, 'minhas_reservas.html', {
+        'reservas_ativas': reservas_ativas,
+        'reservas_passadas': reservas_passadas,
+    })
 
 
 def abrir_vagas(request):

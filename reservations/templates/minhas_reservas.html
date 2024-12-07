@@ -1,0 +1,75 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+    <head>
+        <title>Minhas Reservas</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+    </head>
+
+    <header>
+        {% include "components/navbar.html" with user=user %}
+    </header>
+
+    <body>
+        <div id="search-container-details">
+            {% include "components/search.html" %}
+        </div>
+
+        
+        {% if not reservas_ativas and not reservas_passadas %}
+            <p>Você ainda não fez nenhuma reserva.</p>
+        {% else %}
+            {% if reservas_ativas %}
+                <h2>Reservas Ativas</h2>
+                <ul>
+                    {% for reservation in reservas_ativas %}
+                        <li>
+                            Restaurante: {{ reservation.restaurant__name }} <br>
+                            Data: {{ reservation.date_reservation|date:"d/m/Y" }} <br>
+                            Número de cadeiras: {{ reservation.total_reservations }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            
+            {% if reservas_passadas %}
+                <h2>Reservas Passadas</h2>
+                <ul>
+                    {% for reservation in reservas_passadas %}
+                        <li>
+                            Restaurante: {{ reservation.restaurant__name }} <br>
+                            Data: {{ reservation.date_reservation|date:"d/m/Y" }} <br>
+                            Número de cadeiras: {{ reservation.total_reservations }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+        {% endif %}
+
+
+        
+
+
+        <br><br>
+
+        {% comment %}
+            {% if cliente.is_authenticated %}
+                <h2>Dados de quem está reservando</h2>
+                <h3>Quem é: {{cliente.first_name}}</h3>
+                <h3>Email de Contato: {{cliente.email}}</h3>
+            {% else %}
+                <p>Você não está logado. <a href="/auth/login/">Faça login</a></p>
+            {% endif %}
+        {% endcomment %}
+    
+        {% include "components/footer.html"%}
+    
+    </body>
+</html>
