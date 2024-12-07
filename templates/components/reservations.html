@@ -1,0 +1,45 @@
+<style>
+    .card {
+        display: flex;
+        flex-direction: row;
+        align-items: center; 
+        max-width: 300px;
+        padding: 16px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .card img {
+        width: 80px; 
+        height: 80px;
+        object-fit: cover; 
+        border-radius: 8px;
+        margin-right: 12px; 
+    }
+
+    .card-content {
+        flex: 1; 
+    }
+
+    .card h3 {
+        margin: 0;
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+
+    .card p {
+        margin: 4px 0;
+        color: #555;
+        font-size: 0.9em;
+    }
+</style>
+
+<div class="card">
+    <img src="https://a0.muscache.com/im/pictures/d727f355-3f10-44b5-9750-d1efca2438fc.jpg?im_w=960&im_format=avif" alt="Imagem do local">
+    <div class="card-content">
+        <h3>{{ reservation.restaurant__name }}</h3>
+        <p>Data: {{ reservation.date_reservation|date:"d/m/Y" }} </p>
+        <p>Número de cadeiras: {{ reservation.total_reservations }}</p>
+    </div>
+</div>

@@ -16,7 +16,17 @@
         {% include "components/navbar.html" with user=user %}
     </header>
 
+    <style>
+        h1{
+            padding-top: 100px;
+            color: #45743D;
+            font-weight: 900;
+            text-align: center;
+        }
+    </style>
+
     <body>
+        <h1>Buscar por outros restaurantes</h1>
         <div id="search-container-details">
             {% include "components/search.html" %}
         </div>
