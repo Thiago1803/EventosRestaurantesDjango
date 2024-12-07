@@ -12,6 +12,10 @@
 
     </head>
 
+    <header>
+        {% include "components/navbar.html" with user=user %}
+    </header>
+
     <body>
         <div id="search-container-details">
             {% include "components/search.html" %}
@@ -32,7 +36,8 @@
             {% endif %}
         {% endcomment %}
     
-
+        {% include "components/footer.html"%}
+    
     </body>
 </html>
 

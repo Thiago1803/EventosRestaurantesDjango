@@ -13,25 +13,10 @@
         <link rel="stylesheet" href="{% static 'styles.css' %}">
     </head>
 
-
+    <header>
+        {% include "components/navbar.html" with user=user %}
+    </header>
     <body>
-        <header>
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="collapse navbar-collapse" id="navbar">
-                    <ul class="navbar-nav">
-                        <li class="nav-item"> <a href="/" class="nav-link">Restaurantes</a> </li>
-
-                        {% if user.is_authenticated %}
-                            <li class="nav-item"> <a href="#" class="nav-link">Minhas Reservas</a> </li>
-                            <li class="nav-item"> <a href="{% url 'logout' %}" class="nav-link">Logout</a> </li>
-                        {% else %}
-                            <li class="nav-item"> <a href="{% url 'login' %}" class="nav-link">Entrar</a> </li>
-                            <li class="nav-item"> <a href="{% url 'cadastro' %}" class="nav-link">Cadastrar</a> </li>
-                        {% endif %}
-                    </ul>
-                </div>
-            </nav>
-        </header>
 
         <div class="container">
             <div class="row justify-content-center" style="margin-top: 50px; margin-bottom: 35px;">
@@ -96,9 +81,7 @@
             </div>
         </div>
 
-        <footer>
-            <p>Trabalho Django Reservas em Restaurantes</p>
-        </footer>
+        {% include "components/footer.html"%}
     
         <!-- JS do Bootstrap -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy96mBC4d3lE4jQ9duH6jDKjz" crossorigin="anonymous"></script>

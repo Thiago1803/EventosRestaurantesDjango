@@ -45,14 +45,22 @@ header {
   
 /* navbar */
 #navbar img {
-    width: 40px;
+    width: 115px;
+    height: auto !important;
+    margin-right: auto;
 }
+
+.nav-logo{
+    width: 100%;
+    height: 100%;
+}
+
+
   
 #navbar {
     text-align: end;
     justify-content: space-between;
-    background-color: #FFF;
-    padding: 5px 0;
+    padding: 5px 20px;
 }
   
 #navbar a:hover {
@@ -64,7 +72,7 @@ header {
     background-size: cover;
     background-position: center;
     min-height: 300px;
-    padding: 50px;
+    padding: 150px 50px;
     text-align: center;
 }
   
@@ -144,6 +152,10 @@ header {
 .card-body {
     padding: 1rem;
     justify-items: start;
+}
+
+.card-body form{
+    width: 100%;
 }
 
 .card-title {
@@ -259,7 +271,7 @@ header {
 /* footer */
 footer {
     text-align: center;
-    background-color: #353E48;
+    background-color: #2e4d29;
     color: #FFF;
     padding: 30px;
     position: absolute;
@@ -361,10 +373,16 @@ footer p {
 .vacancy_details_img{
     background-color: #45743D;
     border-radius: 1.5rem;
+    overflow: hidden;
+    max-height: 410px;
 }
 
 .vacancy_details_img img{
     border-radius: 1rem;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
 }
 
 .vacancy_details_title{
@@ -379,7 +397,7 @@ footer p {
 #search-container-details{
     background-size: cover;
     background-position: center;
-    padding: 50px;
+    padding: 150px 50px 0;
     text-align: center;
     justify-items: center;
 }
@@ -404,3 +422,4 @@ footer p {
     position: sticky;
     top: 30px;
 }
+
