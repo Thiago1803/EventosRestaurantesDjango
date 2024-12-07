@@ -31,12 +31,12 @@
                                 <!-- Nome e Sobrenome -->
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="first_name">Nome</label>
-                                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Digite seu nome" required>
+                                        <label for="first_name">Nome*</label>
+                                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Digite seu nome" value="{{ first_name|default:'' }}" required>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="last_name">Sobrenome</label>
-                                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Digite seu sobrenome" required>
+                                        <label for="last_name">Sobrenome*</label>
+                                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Digite seu sobrenome" value="{{ last_name|default:'' }}" required>
                                     </div>
                                 </div>
 
@@ -44,13 +44,13 @@
                                 <!-- Email e Login -->
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="username">Login</label>
-                                        <input type="text" class="form-control" id="username" name="username" placeholder="Defina seu nome de usuário" required>
+                                        <label for="username">Login*</label>
+                                        <input type="text" class="form-control" id="username" name="username" placeholder="Defina seu nome de usuário" value="{{ username|default:'' }}" required>
                                     </div>
     
                                     <div class="form-group col-md-6">
-                                        <label for="email">E-mail</label>
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu e-mail" required>
+                                        <label for="email">E-mail*</label>
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu e-mail" value="{{ email|default:'' }}" required>
                                     </div>
                                 </div>
                                 
@@ -58,12 +58,12 @@
                                 <!-- Senha -->
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="password">Senha</label>
+                                        <label for="password">Senha*</label>
                                         <input type="password" class="form-control" id="password" name="password" placeholder="Escolha uma senha" required>
                                     </div>
 
                                     <div class="form-group col-md-6">
-                                        <label for="password2">Confirme a Senha</label>
+                                        <label for="password2">Confirme a Senha*</label>
                                         <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirme sua senha" required>
                                     </div>
                                 </div>
@@ -75,6 +75,10 @@
                                     <button type="submit" class="btn btn-primary">Cadastrar</button>
                                 </div>
                             </form>
+
+                            {% if error_message %}
+                                <p style="color: red; text-align: center; width: 100% !important;">{{ error_message }}</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
