@@ -1,16 +1,71 @@
 {% load static %}
 
 <!DOCTYPE html>
-
 <html lang="pt-BR">
-    <head>
-        <title>Erro 404</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{% static 'reservations/css/main.css' %}">
-    </head>
+<head>
+    <title>Erro 404 - Página não encontrada</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f9fa;
+            margin: 0;
+        }
 
-    <body>
-        <h1>Nao buscou um restaurante certo, bobão!</h1>
-    </body>
+        .error-container {
+            text-align: center;
+        }
+
+        .error-title {
+            font-size: 6rem;
+            font-weight: bold;
+            color: #155724;
+        }
+
+        .error-message {
+            font-size: 1.5rem;
+            color: #6c757d;
+        }
+
+        .error-message-2 {
+            font-size: 1.25rem;
+            color: #217535;
+        }
+
+        .back-link {
+            margin-top: 20px;
+        }
+
+        .back-link a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<header>
+    {% include "components/navbar.html" with user=user %}
+</header>
+<body>
+    <div class="error-container">
+        <h1 class="error-title">404</h1>
+        <p class="error-message">Oops! Não encontramos o restaurante que você procurava.</p>
+        <p class="error-message-2">Que tal voltar para a página inicial e tentar novamente?</p>
+        <div class="back-link">
+            <a href="/" class="btn btn-primary btn-lg mt-4">Voltar para a Home</a>
+        </div>
+        
+    </div>
+    {% include "components/footer.html"%}
+</body>
 </html>
