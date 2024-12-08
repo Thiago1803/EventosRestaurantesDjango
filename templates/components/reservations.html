@@ -36,7 +36,7 @@
 </style>
 
 <div class="card">
-    <img src="https://a0.muscache.com/im/pictures/d727f355-3f10-44b5-9750-d1efca2438fc.jpg?im_w=960&im_format=avif" alt="Imagem do local">
+    <img src="{{ MEDIA_URL }}{{ reservation.restaurant__image }}" alt="{{ reservation.restaurant__name }}">
     <div class="card-content">
         <h3>{{ reservation.restaurant__name }}</h3>
         <p>Data: {{ reservation.date_reservation|date:"d/m/Y" }} </p>

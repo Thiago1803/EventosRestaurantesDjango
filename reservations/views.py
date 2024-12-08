@@ -6,6 +6,7 @@ from django.db.models import Sum
 from django.contrib import messages
 from django.utils import timezone
 from datetime import datetime
+from django.conf import settings
 
 
 def ver_vagas(request, restaurante_id):
@@ -97,7 +98,7 @@ def ver_minhas_reservas(request):
     # Filtra as reservas feitas por este usuário
     reservations = (
         Reservations.objects.filter(client=client)
-        .values('date_reservation', 'restaurant__name')  # Agrupa por data e restaurante
+        .values('date_reservation', 'restaurant__name', 'restaurant__image')  # Agrupa por data e restaurante
         .annotate(total_reservations=Sum('number_reservations'))
     )
 
@@ -108,6 +109,7 @@ def ver_minhas_reservas(request):
     return render(request, 'minhas_reservas.html', {
         'reservas_ativas': reservas_ativas,
         'reservas_passadas': reservas_passadas,
+        'MEDIA_URL': settings.MEDIA_URL
     })
 
 

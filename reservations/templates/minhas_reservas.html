@@ -47,22 +47,23 @@
             {% if not reservas_ativas and not reservas_passadas %}
                 <p>Você ainda não fez nenhuma reserva.</p>
             {% else %}
-                <div>
-                    {% if reservas_ativas %}
+                
+                {% if reservas_ativas %}
+                    <div>
                         <h3>Reservas Ativas</h3>
-                            {% for reservation in reservas_ativas %}
-                                {% include "components/reservations.html" %}
-                            {% endfor %}
-                    {% endif %}
-                </div>
-                <div class="mt-5">
-                    {% if reservas_passadas %}
-                        <h3>Reservas Passadas</h3>
                         {% for reservation in reservas_ativas %}
                             {% include "components/reservations.html" %}
-                        {% endfor %}    
-                    {% endif %}
-                </div>        
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% if reservas_passadas %}
+                    <div class="mt-5">
+                        <h3>Reservas Passadas</h3>
+                        {% for reservation in reservas_passadas %}
+                            {% include "components/reservations.html" %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
             {% endif %}
         </div>
         <br><br>
