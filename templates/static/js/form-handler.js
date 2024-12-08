@@ -11,6 +11,6 @@ document.querySelector("form").addEventListener("submit", function(event) {
 
     event.preventDefault();
 
-    if (hasValue) window.location.href = `?${params.toString()}`;
+    if (hasValue) window.location.href = `/?${params.toString()}`;
     else window.location.href = `/`;
 });
