@@ -52,9 +52,8 @@ Pronto! 🚀 Acesse o sistema em: **http://127.0.0.1:8000**
 ---
 
 ## 📚 **Arquitetura da aplicação**  
-(Adicione seu diagrama de arquitetura aqui, caso tenha. Se preferir, insira uma imagem utilizando markdown:)  
 
-![Diagrama da aplicação](link-para-o-diagrama.png)  
+[![](https://mermaid.ink/img/pako:eNqlVEuP2jAQ_ivWXAsICOTha6uVem3VSxUJTePZYCmxI3vcliL-e52wQoHswlb1IZn55vXNZJwjVFYRSKga9P6TxtphWxoRz4CIb56cOJ6R_nwQWkmhDY-hEJ0MtiSFZzc2UIu6maBdTPzLOjUynEozrvoRmWrrDg8r31S9SfNkrfrPFF_IMwaHhv2_ZjqDqJQj76dD2Fvz3oFVmg8TUJGvnO5YWzOxsWVsdrEuuZ_Ye_gJWduR0abese5J98-rio31d6yO4gdSO2QpVJRu7brFOoZ97l9Pmhr11mgv9B7PNrQ_yN1vqacy9nid3NvkL_yGpS9hVYKYz6NgonDFVsYWNBl-CRwvyf0wpva1EDMOGbZWis56H7RoyYSHIZf7MlQQ1VnV6GEGLbm4VCre8WHGJfCeYscgo6joGUPDJZTmFF0xsP16MBVIdoFm4Gyo9yCfsfFRC10_rpd_xAXt0Hy39koHeYTfIOebIlmkxXKdJ_ky32bLdTqDA8jVJlkUaZovk3WeZXmxTU8z-DPkWC22WbFJsyRbFUmaF8X69BeSzWD-?type=png)](https://mermaid.live/edit#pako:eNqlVEuP2jAQ_ivWXAsICOTha6uVem3VSxUJTePZYCmxI3vcliL-e52wQoHswlb1IZn55vXNZJwjVFYRSKga9P6TxtphWxoRz4CIb56cOJ6R_nwQWkmhDY-hEJ0MtiSFZzc2UIu6maBdTPzLOjUynEozrvoRmWrrDg8r31S9SfNkrfrPFF_IMwaHhv2_ZjqDqJQj76dD2Fvz3oFVmg8TUJGvnO5YWzOxsWVsdrEuuZ_Ye_gJWduR0abese5J98-rio31d6yO4gdSO2QpVJRu7brFOoZ97l9Pmhr11mgv9B7PNrQ_yN1vqacy9nid3NvkL_yGpS9hVYKYz6NgonDFVsYWNBl-CRwvyf0wpva1EDMOGbZWis56H7RoyYSHIZf7MlQQ1VnV6GEGLbm4VCre8WHGJfCeYscgo6joGUPDJZTmFF0xsP16MBVIdoFm4Gyo9yCfsfFRC10_rpd_xAXt0Hy39koHeYTfIOebIlmkxXKdJ_ky32bLdTqDA8jVJlkUaZovk3WeZXmxTU8z-DPkWC22WbFJsyRbFUmaF8X69BeSzWD-)
 
 ---
 
@@ -63,19 +62,3 @@ Pronto! 🚀 Acesse o sistema em: **http://127.0.0.1:8000**
 - **Cadastro e gerenciamento de reservas**  
 - **Filtro por localização, tipo de comida e estabelecimentos**  
 - **Interface simples e intuitiva para os clientes**  
-
----
-
-## 💡 **Contribuições**  
-
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests.  
-
----
-
-## 📝 **Licença**  
-
-Este projeto está licenciado sob a licença [MIT](LICENSE).  
-
----
-
-O que achou? 😊 Se precisar, podemos ajustar ou complementar!
