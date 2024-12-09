@@ -30,6 +30,13 @@
             flex-direction: column;
             gap: 3rem;
         }
+
+        .reservation-items{
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
     </style>
 
     <header>
@@ -51,17 +58,21 @@
                 {% if reservas_ativas %}
                     <div>
                         <h3>Reservas Ativas</h3>
-                        {% for reservation in reservas_ativas %}
-                            {% include "components/reservations.html" %}
-                        {% endfor %}
+                        <div class="reservation-items">
+                            {% for reservation in reservas_ativas %}
+                                {% include "components/reservations.html" %}
+                            {% endfor %}
+                        </div>
                     </div>
                 {% endif %}
                 {% if reservas_passadas %}
                     <div class="mt-5">
                         <h3>Reservas Passadas</h3>
-                        {% for reservation in reservas_passadas %}
-                            {% include "components/reservations.html" %}
-                        {% endfor %}
+                        <div class="reservation-items">
+                            {% for reservation in reservas_passadas %}
+                                {% include "components/reservations.html" %}
+                            {% endfor %}
+                        </div>
                     </div>
                 {% endif %}
             {% endif %}
