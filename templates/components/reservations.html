@@ -1,29 +1,30 @@
 <style>
     .card {
-        flex: 1 0 calc(33.333% - 16px); 
-        min-width: 300px; 
+        flex: 1 0 calc(33.333% - 16px);
+        min-width: 300px;
         display: flex;
         flex-direction: row;
-        align-items: center; 
+        align-items: center;
         padding: 16px;
         background: #fff;
         border-radius: 8px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         box-sizing: border-box;
         max-width: 350px;
-
+        transition: background 0.3s, color 0.3s;
+        /* Para suavizar a transição de cor */
     }
 
     .card img {
-        width: 80px; 
+        width: 80px;
         height: 80px;
-        object-fit: cover; 
+        object-fit: cover;
         border-radius: 8px;
-        margin-right: 12px; 
+        margin-right: 12px;
     }
 
     .card-content {
-        flex: 1; 
+        flex: 1;
     }
 
     .card h3 {
@@ -37,13 +38,33 @@
         color: #555;
         font-size: 0.9em;
     }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .card:hover, .card:active {
+        background-color: #2e4d29;
+        color: #fff;
+        text-decoration: none;
+    }
+
+
+
+    .card:hover p,
+    .card:hover h3,
+    .card:active p,
+    .card:active h3 {
+        color: #fff;
+    }
 </style>
 
-<div class="card">
+<a href="/vagas/ver_vagas/{{ reservation.restaurant__id }}" class="card">
     <img src="{{ MEDIA_URL }}{{ reservation.restaurant__image }}" alt="{{ reservation.restaurant__name }}">
     <div class="card-content">
-        <a href="/vagas/ver_vagas/{{ reservation.restaurant__id }}">{{ reservation.restaurant__name }}</a>
+        <h3> {{ reservation.restaurant__name }} </h3>
         <p>Data: {{ reservation.date_reservation|date:"d/m/Y" }} </p>
         <p>Número de cadeiras: {{ reservation.total_reservations }}</p>
     </div>
-</div>
+</a>

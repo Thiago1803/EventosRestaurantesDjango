@@ -37,7 +37,7 @@
                     {% csrf_token %}
                     <input type="hidden" name="restaurante" value="{{ restaurante.id }}">
 
-                    <h5 class="fw-bold">R$ {{restaurante.price_reservation}}/Dia</h5>
+                    <h5 class="fw-bold">R$ {{restaurante.price_reservation}} /dia</h5>
                     <div class="row d-flex justify-content-between primary-color ">
                         <p>Abertura: {{restaurante.opening_time}}</p>
                         <p>Fechamento: {{restaurante.closing_time}}</p>
