@@ -4,7 +4,7 @@ from .models import Restaurants, Food, Category
 
 @admin.register(Restaurants) # aqui faz aparecer o menuzinho de restaurantes la no ambiete admin
 class RestaurantAdmin(admin.ModelAdmin):
-    list_display = ('name', 'address', 'city', 'phone', 'display_foods', 'display_categories', 'image',)
+    list_display = ('name', 'address', 'city', 'phone', 'display_foods', 'display_categories', 'price_reservation', 'image',)
     list_display_links = ('name',)
     search_fields = ('name', 'city',)
     filter_horizontal = ('menu', 'category', )

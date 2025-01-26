@@ -55,6 +55,7 @@ class Restaurants(models.Model):
     menu = models.ManyToManyField(Food, related_name='restaurants', verbose_name="Comida")
     category = models.ManyToManyField(Category, related_name='restaurants', verbose_name="Categoria")
 
+    price_reservation = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False, default=0, verbose_name='Valor da Reserva')
     total_resevations = models.PositiveIntegerField(validators=[MinValueValidator(1)], verbose_name='Total de Vagas', default=0)
 
     opening_time = models.TimeField(null=False, blank=False, verbose_name="Abertura")

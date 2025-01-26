@@ -42,7 +42,7 @@
 <div class="card">
     <img src="{{ MEDIA_URL }}{{ reservation.restaurant__image }}" alt="{{ reservation.restaurant__name }}">
     <div class="card-content">
-        <h3>{{ reservation.restaurant__name }}</h3>
+        <a href="/vagas/ver_vagas/{{ reservation.restaurant__id }}">{{ reservation.restaurant__name }}</a>
         <p>Data: {{ reservation.date_reservation|date:"d/m/Y" }} </p>
         <p>Número de cadeiras: {{ reservation.total_reservations }}</p>
     </div>

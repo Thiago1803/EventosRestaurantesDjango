@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.utils import timezone
 from datetime import datetime
 from django.conf import settings
+from django.http import JsonResponse
 
 
 def ver_vagas(request, restaurante_id):
@@ -14,14 +15,21 @@ def ver_vagas(request, restaurante_id):
         # Pegando o restaurante que o usuário deseja ver as vagas
         restaurante = Restaurants.objects.get(id=restaurante_id)
 
+        # Pegando a data do formulário, se fornecida, ou usando a data atual como padrão
+        date_reservation = request.GET.get('date_reservation', datetime.now().date().strftime('%Y-%m-%d'))
+        date_reservation = datetime.strptime(date_reservation, '%Y-%m-%d').date()
+
         # número de vagas do restaurante
         total_vagas = restaurante.total_resevations
 
-        # aqui faz a conta da quantidade de pessoas que maracaram reserva nesse restaurante
-        total_reservas = Reservations.objects.filter(restaurant=restaurante).aggregate(Sum('number_reservations'))['number_reservations__sum'] or 0
+        # aqui faz a conta da quantidade de pessoas que maracaram reserva nesse restaurante no dia
+        reservas_no_dia = Reservations.objects.filter(
+            restaurant=restaurante,
+            date_reservation=date_reservation
+        ).aggregate(Sum('number_reservations'))['number_reservations__sum'] or 0
 
         # aqui pega o que falta de vagas
-        vagas_disponiveis = total_vagas - total_reservas
+        vagas_disponiveis = total_vagas - reservas_no_dia
 
         #pega os dados do usuario logado
         client = request.user
@@ -29,12 +37,21 @@ def ver_vagas(request, restaurante_id):
         #pega a data atual, para ser o dia minímo permitido para reserva
         today = datetime.now().date().strftime('%Y-%m-%d')
 
+
+        # Se for uma requisição AJAX, retornar os dados em JSON
+        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            return JsonResponse({
+                'vagas_disponiveis': vagas_disponiveis,
+                'reservation_date': date_reservation.strftime('%Y-%m-%d')
+            })
+        
+        
+        #senao é a renderizacao da pagina normal
         return render(request, 'ver_vagas.html', 
             {
-                'today': today,
-                'cliente': client,
+                'today': today,'cliente': client,
                 'restaurante': restaurante, 'total_vagas': total_vagas, 
-                'total_reservas': total_reservas, 'vagas_disponiveis': vagas_disponiveis
+                'total_reservas': reservas_no_dia, 'vagas_disponiveis': vagas_disponiveis
             }
         )
 
@@ -98,7 +115,7 @@ def ver_minhas_reservas(request):
     # Filtra as reservas feitas por este usuário
     reservations = (
         Reservations.objects.filter(client=client)
-        .values('date_reservation', 'restaurant__name', 'restaurant__image')  # Agrupa por data e restaurante
+        .values('date_reservation', 'restaurant__id', 'restaurant__name', 'restaurant__image')  # Agrupa por data e restaurante
         .annotate(total_reservations=Sum('number_reservations'))
     )
 

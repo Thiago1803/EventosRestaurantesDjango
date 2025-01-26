@@ -37,7 +37,7 @@
                     {% csrf_token %}
                     <input type="hidden" name="restaurante" value="{{ restaurante.id }}">
 
-                    <h5 class="fw-bold">R$ 54,00/Dia</h5>
+                    <h5 class="fw-bold">R$ {{restaurante.price_reservation}}/Dia</h5>
                     <div class="row d-flex justify-content-between primary-color ">
                         <p>Abertura: {{restaurante.opening_time}}</p>
                         <p>Fechamento: {{restaurante.closing_time}}</p>
@@ -45,13 +45,13 @@
 
                     <div class="calendar">
                         <!-- Calendário Bootstrap 5 -->
-                        <input type="date" class="form-control"  id="date_reservation" name="date_reservation" min='{{ today }}' required/>
+                        <input type="date" class="form-control"  id="date_reservation" name="date_reservation" min='{{ today }}' value='{{ today }}' required/>
                     </div>
 
                     <div class="mt-5">
                         <!-- Campo para quantidade de vagas -->
                         <label for="vagas" class="form-label">Quantidade de Vagas</label>
-                        <p class="vacancy_total fs-6">Vagas disponíveis: {{vagas_disponiveis}}</p>
+                        <p class="vacancy_total fs-6" id="vacancues_available">Vagas Disponíveis: {{vagas_disponiveis}}</p>
 
                         <input type="number" class="form-control" id="number_reservations" name="number_reservations" min="1" max="{{vagas_disponiveis}}"
                             placeholder="Digite a quantidade de vagas" required />
@@ -68,3 +68,23 @@
 
     </div>
 </div>
+
+
+<script>
+    $(document).ready(function() {
+        $('#date_reservation').on('change', function() {
+            var reservationDate = $(this).val();
+
+            $.ajax({
+                url: window.location.href,
+                data: {
+                    'date_reservation': reservationDate
+                },
+                dataType: 'json',
+                success: function(response) {
+                    $('#vacancues_available').text('Vagas Disponíveis: ' + response.vagas_disponiveis);
+                }
+            });
+        });
+    });
+</script>
